@@ -1,20 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template
+from jscontrolpad import JsControlPad
 
 app = Flask(__name__)
+jscp = JsControlPad()
 
-@app.route('/test/nested1')
-def layout1():
-	return render_template('nested1.html')
-	
-@app.route('/test/nested2')
-def layout1():
-	return render_template('nested2.html')
-
-@app.route('/help')
-def help():
-	return app.send_static_file('help.html')
 
 @app.route('/config')
 def config():
@@ -23,13 +14,25 @@ def config():
 		}
 	return render_template('template.html', **templateData)
 
-@app.route('/control')
-def contro_showlist():
-	return 'hello'
+
 
 @app.route('/control/<config>')
 def control_withconfig(config):
 	return render_template('template.html', Title=config)
+	
+@app.route('/control/render')
+def contro_showlist():
+	return jscp.renderPad()
+	
+	
+@app.route('/controller/addcontrol/<controltype>/<controlname>')
+def addControlToControlPad(controltype, controlname):
+	eventArgs = {
+		'controltype' : controltype,
+		'controlname' : controlname
+	}
+	return jscp.addControlToControlPad(**eventArgs)
+	
 
 @app.route('/')
 def index():
@@ -44,7 +47,9 @@ def index():
 
 
 def main():
-	app.run(debug=True, host='0.0.0.0', port=int("5000"))
+	#app.run(debug=True, host='0.0.0.0', port=int("5000"))
+	#app.run(debug=False, host='0.0.0.0', port=int("5000"))
+	app.run(threaded=True, debug=True, host='0.0.0.0', port=int("5000"))
 	
 if __name__ == '__main__':
 	main()
