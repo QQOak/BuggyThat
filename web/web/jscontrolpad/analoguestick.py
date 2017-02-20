@@ -1,5 +1,5 @@
-from jscontrolpad.jscontrolbase import JsControlBase
-dir
+from .jscontrolbase import JsControlBase
+
 class AnalogueStick(JsControlBase):
 	
 	def __init__(self, name):

@@ -1,0 +1,49 @@
+body
+{
+	padding: 0px;
+	margin: 0px;
+	font: 12pt verdana, arial;
+}
+
+.pageheading
+{
+	border: 1px solid black;
+	padding: 10px;
+	margin: 10px;
+	background-color: #7079FF;
+	font-size: 18pt;
+	color: white;
+}
+.pageheading .pagename
+{
+	color: #DCDEFF;
+	font-size: 12pt;
+	padding-left: 20px;
+}
+
+
+
+
+.primarynavigation, .secondarynavigation
+{
+	display: inline;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px 10px 0px 10px;
+}
+
+.primarynavigation li, .secondarynavigation li
+{
+	display: inline;
+	padding: 0px 10px 0px 10px;
+}
+
+.secondarynavigation
+{
+	float: right;
+}
+
+.primarynavigation a, .secondarynavigation a
+{
+	text-decoration: none;
+}

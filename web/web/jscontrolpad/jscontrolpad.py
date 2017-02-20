@@ -1,4 +1,4 @@
-from jscontrolpad.analoguestick import AnalogueStick
+from .analoguestick import AnalogueStick
 
 
 class JsControlPad:
