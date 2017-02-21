@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>{{ Title }}</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="generator" content="Geany 1.24.1" />
+
+	<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon-32x32.png') }}" sizes="32x32" />
+	<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon-16x16.png') }}" sizes="16x16" />
+
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.1.1.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
+	
+
+
+    <script src="{{ url_for('static', filename='htmlgamepad/jquery-2.2.0.js') }}"></script>
+    <script src="{{ url_for('static', filename='htmlgamepad/GameController.js') }}"></script>
+    <script src="{{ url_for('static', filename='htmlgamepad/ThumbStick.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='htmlgamepad/ThumbStick.css') }}" />
+    
+    <script>
+
+        "use strict";
+        $(document).ready(function () {
+
+            var $gameController = $(document).GameController({
+				id: 'gameController1',
+				outputLabel: $('#GameControllerLabel'),
+				controllerUrl: '{{ url_for('controlPadApi') }}'
+			});
+                
+            $('#LeftStick').ThumbStick({
+				gameController: $gameController,
+				outputLabel: $('#LeftStickLabel'),
+				maxRadius: 150
+			});
+			
+			
+            $('#RightStick').ThumbStick({
+				gameController: $gameController,
+				outputLabel: $('#RightStickLabel'),
+				maxRadius: 150
+			});
+
+        });
+
+    </script>
+
+	
+</head>
+
+<body>
+	
+	<div class="pageheading">BuggyThat<span class="pagename">{{ Title }}</span></div>
+	<ul class="primarynavigation">
+		<li><a href="{{ url_for('controlpad') }}">control pad</a></li>
+		<li><a href=""></a></li>
+	</ul>
+	
+	<ul class="secondarynavigation">
+		<li><a href="{{ url_for('settings') }}">settings</a></li>
+		<li><a href="{{ url_for('about') }}">about</a></li>
+	</ul>
+	
+	
+
+    <h1>Thumb Sticks</h1>
+    <div id="LeftStick" class="StickArea"><div id="LeftStickLabel" class="OutputLabel"></div></div>
+
+    <div id="RightStick" class="StickArea"><div id="RightStickLabel" class="OutputLabel"></div></div>
+   
+    <div id="GameControllerLabel" class="OutputLabel"></div>
+	
+	
+	
+</body>
+</html>
