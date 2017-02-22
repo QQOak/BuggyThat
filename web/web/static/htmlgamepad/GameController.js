@@ -112,7 +112,7 @@
                 $.ajax({
                     type: 'POST',
                     url: settings.controllerUrl,
-                    contentType: "Application/json; charset=utf-8",
+                    contentType: "application/json", //; charset=utf-8",
                     dataType: "json",
                     data: JSONData,
                     success: function (data) {
